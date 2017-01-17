@@ -1,6 +1,5 @@
 <template>
-  <div class="bs-docs-section" id="modal">
-    <h1 class="page-header"><a href="#modal" class="anchor">Modal</a></h1>
+  <doc-section id="modal" name="Modal">
     <div class="bs-example">
       <button class="btn btn-default" @click="showModal = true">Show modal</button>
       <modal title="Modal title" :show.sync="showModal">
@@ -89,108 +88,91 @@
         </div>
       </modal>
     </div>
-    <pre><code class="language-markup"><script type="language-mark-up">
-<button class="btn btn-default"
-  @click="showModal = true"
-  >Show modal
-</button>
-<modal :show.sync="showModal">
-  <div slot="modal-header" class="modal-header">
-    <h4 class="modal-title">Modal title</h4>
-  </div>
-  <div slot="modal-body" class="modal-body">...</div>
-</modal>
+    <doc-code language="markup">
+      <modal :show.sync="...">
+        <div slot="modal-header" class="modal-header">
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div slot="modal-body" class="modal-body">...</div>
+      </modal>
 
-<button class="btn btn-primary"
-  @click="fadeModal = true">
-  Fade modal
-</button>
-<modal title="Fade Modal" :show.sync="fadeModal" effect="fade" width="800">
-  <div slot="modal-body" class="modal-body">...</div>
-</modal>
+      <modal title="Fade Modal" :show.sync="..." effect="fade" width="800">
+        <div slot="modal-body" class="modal-body">...</div>
+      </modal>
 
-<button class="btn btn-success"
-  @click="zoomModal = true">
-  Zoom modal
-</button>
-<modal title="Zoom Modal" :show.sync="zoomModal" effect="zoom" width="400">
-  <div slot="modal-body" class="modal-body">...</div>
-</modal>
+      <modal title="Zoom Modal" :show.sync="..." effect="zoom" width="400">
+        <div slot="modal-body" class="modal-body">...</div>
+      </modal>
 
-<button class="btn btn-default"
-  @click="showCustomModal = true">
-  Show custom modal
-</button>
-<modal :show.sync="showCustomModal" effect="fade" width="400">
-  <div slot="modal-header" class="modal-header">
-    <h4 class="modal-title">
-      <i>Custom</i> <code>Modal</code> <b>Title</b>
-    </h4>
-  </div>
-  <div slot="modal-body" class="modal-body">...</div>
-  <div slot="modal-footer" class="modal-footer">
-    <button type="button" class="btn btn-default" @click='showCustomModal = false'>Exit</button>
-    <button type="button" class="btn btn-success" @click='showCustomModal = false'>Custom Save</button>
-  </div>
-</modal>
-<button class="btn btn-default"
-  @click="largeModal = true"
-  >Large Modal
-</button>
-<modal :show.sync="largeModal">
-  <div slot="modal-body" class="modal-body">...</div>
-</modal>
-<button class="btn btn-default"
-  @click="smallModal = true"
-  >Small Modal
-</button>
-<modal :show.sync="smallModal">
-  <div slot="modal-body" class="modal-body">...</div>
-</modal>
-  </script></code></pre>
-  <h2>Options</h2>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Default</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>title</td>
-        <td><code>String</code></td>
-        <td></td>
-        <td>Title of the modal component.</td>
-      </tr>
-      <tr>
-        <td>width</td>
-        <td><code>Number, String or null</code></td>
-        <td><code>null</code></td>
-        <td>Pass a Number in pixels or a String with relational sizes ( ex: '80%' or '5em' ). If null, the modal will be responsive per bootstrap's default.</td>
-      </tr>
-      <tr>
-        <td>callback</td>
-        <td><code>Function</code></td>
-        <td></td>
-        <td>A callback Function when you click the modal primary button.</td>
-      </tr>
-      <tr>
-        <td>large</td>
-        <td><code>Boolean</code></td>
-        <td><code>false</code></td>
-        <td>Creates a large modal ( see boostrap's documentation for .modal-lg )</td>
-      </tr>
-      <tr>
-        <td>small</td>
-        <td><code>Boolean</code></td>
-        <td><code>false</code></td>
-        <td>Creates a small modal ( see boostrap's documentation for .modal-sm )</td>
-      </tr>
-    </tbody>
-  </table>
+      <modal :show.sync="showCustomModal" effect="fade" width="400">
+        <div slot="modal-header" class="modal-header">
+          <h4 class="modal-title">
+            <i>Custom</i> <code>Modal</code> <b>Title</b>
+          </h4>
+        </div>
+        <div slot="modal-body" class="modal-body">...</div>
+        <div slot="modal-footer" class="modal-footer">
+          <button type="button" class="btn btn-default" @click='showCustomModal = false'>Exit</button>
+          <button type="button" class="btn btn-success" @click='showCustomModal = false'>Custom Save</button>
+        </div>
+      </modal>
+      <modal title="Large Modal" large :show.sync="...">
+        <div slot="modal-body" class="modal-body">...</div>
+      </modal>
+      <modal title="Small Modal" small :show.sync="...">
+        <div slot="modal-body" class="modal-body">...</div>
+      </modal>
+  </doc-code>
+  <doc-table>
+    <div>
+      <p>title</p>
+      <p><code>String</code></p>
+      <p></p>
+      <p>Title of the modal component.</p>
+    </div>
+    <div>
+      <p>ok-text</p>
+      <p><code>String</code></p>
+      <p>Save changes</p>
+      <p>Text for OK button</p>
+    </div>
+    <div>
+      <p>cancel-text</p>
+      <p><code>String</code></p>
+      <p>Close</p>
+      <p>Text for cancel button</p>
+    </div>
+    <div>
+      <p>width</p>
+      <p><code>Number, String or null</code></p>
+      <p><code>null</code></p>
+      <p>Pass a Number in pixels or a String with relational sizes ( e.g. '80%' or '5em' ). If null, the modal will be responsive per bootstrap's default.</p>
+    </div>
+    <div>
+      <p>callback</p>
+      <p><code>Function</code></p>
+      <p></p>
+      <p>A callback Function when you click the modal primary button.</p>
+    </div>
+    <div>
+      <p>large</p>
+      <p><code>Boolean</code></p>
+      <p><code>false</code></p>
+      <p>Creates a large modal ( see boostrap's documentation for .modal-lg )</p>
+    </div>
+    <div>
+      <p>small</p>
+      <p><code>Boolean</code></p>
+      <p><code>false</code></p>
+      <p>Creates a small modal ( see boostrap's documentation for .modal-sm )</p>
+    </div>
+    <div>
+      <p>backdrop</p>
+      <p><code>Boolean</code></p>
+      <p><code>true</code></p>
+      <p>Enables/disables closing the modal by clicking on the backdrop.</p>
+    </div>
+  </doc-table>
   <h2>Usage</h2>
   <p>
     If you just need a simple modal, you can use the <code>title</code> prop and the default footer. However, if you
@@ -202,20 +184,27 @@
 </template>
 
 <script>
-  import modal from 'src/Modal.vue'
-  export default {
-    data() {
-      return {
-        showModal: false,
-        fadeModal: false,
-        zoomModal: false,
-        showCustomModal: false,
-        largeModal: false,
-        smallModal: false
-      }
-    },
-    components: {
-      modal
+import docSection from './docSection.vue'
+import docTable from './docTable.vue'
+import docCode from './docCode.vue'
+import modal from 'src/Modal.vue'
+
+export default {
+  components: {
+    docSection,
+    docTable,
+    docCode,
+    modal
+  },
+  data () {
+    return {
+      showModal: false,
+      fadeModal: false,
+      zoomModal: false,
+      showCustomModal: false,
+      largeModal: false,
+      smallModal: false
     }
   }
+}
 </script>

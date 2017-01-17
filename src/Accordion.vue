@@ -5,26 +5,31 @@
 </template>
 
 <script>
-import coerceBoolean from './utils/coerceBoolean.js'
+import {coerce} from './utils/utils.js'
 
-  export default {
-    props: {
-      oneAtATime: {
-        type: Boolean,
-        coerce: coerceBoolean,
-        default: false
-      }
+export default {
+  props: {
+    type: {
+      type: String,
+      default: null
     },
-    created() {
-      this.$on('isOpenEvent', (child)=> {
-        if (this.oneAtATime) {
-          this.$children.forEach((item) => {
-            if (child !== item ) {
-              item.isOpen = false
-            }
-          })
-        }
-      })
+    oneAtAtime: {
+      type: Boolean,
+      coerce: coerce.boolean,
+      default: false
     }
+  },
+  created () {
+    this._isAccordion = true
+    this.$on('isOpenEvent', (child) => {
+      if (this.oneAtAtime) {
+        this.$children.forEach((item) => {
+          if (child !== item) {
+            item.isOpen = false
+          }
+        })
+      }
+    })
   }
+}
 </script>
